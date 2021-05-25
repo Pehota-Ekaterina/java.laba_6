@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -8,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 @SuppressWarnings("serial")
+
 public class Field extends JPanel {
     // Флаг приостановленности движения
     private boolean paused;
@@ -29,6 +29,13 @@ public class Field extends JPanel {
 // Запустить таймер
         repaintTimer.start();
     }
+
+    public synchronized void threadStop()throws
+            InterruptedException{
+
+        wait();
+
+    }
     // Унаследованный от JPanel метод перерисовки компонента
     public void paintComponent(Graphics g) {
 // Вызвать версию метода, унаследованную от предка
@@ -46,12 +53,14 @@ public class Field extends JPanel {
 // BouncingBall выполняет сам в конструкторе
         balls.add(new BouncingBall(this));
     }
+
     // Метод синхронизированный, т.е. только один поток может
 // одновременно быть внутри
     public synchronized void pause() {
 // Включить режим паузы
         paused = true;
     }
+
     // Метод синхронизированный, т.е. только один поток может
 // одновременно быть внутри
     public synchronized void resume() {
@@ -70,4 +79,7 @@ public class Field extends JPanel {
             wait();
         }
     }
+
+
+
 }

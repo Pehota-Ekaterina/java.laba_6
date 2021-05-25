@@ -8,7 +8,9 @@ public class BouncingBall implements Runnable {
     private static final int MIN_RADIUS = 3;
     // Максимальная скорость, с которой может летать мяч
     private static final int MAX_SPEED = 15;
+    private int text;
     private Field field;
+
     private int radius;
     private Color color;
     // Текущие координаты мяча
@@ -18,10 +20,15 @@ public class BouncingBall implements Runnable {
     private int speed;
     private double speedX;
     private double speedY;
+    public int setText(){
+        return text;
+    }
     // Конструктор класса BouncingBall
+
     public BouncingBall(Field field) {
 // Необходимо иметь ссылку на поле, по которому прыгает мяч,
 // чтобы отслеживать выход за его пределы
+
 // через getWidth(), getHeight()
         this.field = field;
 // Радиус мяча случайного размера
@@ -53,6 +60,9 @@ public class BouncingBall implements Runnable {
     }
     // Метод run() исполняется внутри потока. Когда он завершает работу,
 // то завершается и поток
+
+
+
     public void run() {
         try {
 // Крутим бесконечный цикл, т.е. пока нас не прервут,

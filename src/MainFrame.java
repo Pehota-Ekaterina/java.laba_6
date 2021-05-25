@@ -1,13 +1,11 @@
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
 @SuppressWarnings("serial")
+
 public class MainFrame extends JFrame {
     // Константы, задающие размер окна приложения, если оно
 // не распахнуто на весь экран
@@ -17,6 +15,7 @@ public class MainFrame extends JFrame {
     private JMenuItem resumeMenuItem;
     // Поле, по которому прыгают мячи
     private Field field = new Field();
+
     // Конструктор главного окна приложения
     public MainFrame() {
         super("Программирование и синхронизация потоков");
@@ -43,8 +42,10 @@ public class MainFrame extends JFrame {
                 }
             }
         };
+
         menuBar.add(ballMenu);
         ballMenu.add(addBallAction);
+
         JMenu controlMenu = new JMenu("Управление");
         menuBar.add(controlMenu);
         Action pauseAction = new AbstractAction("Приостановить движение"){
@@ -65,7 +66,25 @@ public class MainFrame extends JFrame {
         };
         resumeMenuItem = controlMenu.add(resumeAction);
         resumeMenuItem.setEnabled(false);
+
+
+        JMenu magneticMenu = new JMenu("Магнетизм");
+        menuBar.add(magneticMenu);
+
+        JCheckBoxMenuItem magnetic = new JCheckBoxMenuItem("магнетизм");
+        magneticMenu.add(magnetic);
+
+        magnetic.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+
+
+
+            }
+        });
+
 // Добавить в центр граничной компоновки поле Field
         getContentPane().add(field, BorderLayout.CENTER);
     }
+
 }
