@@ -78,7 +78,11 @@ public class MainFrame extends JFrame {
 
             public void actionPerformed(ActionEvent e) {
 
-
+                if (magnetic.getState()){
+                    field.magneticOn();
+                }else {
+                    field.magneticOff();
+                }
 
             }
         });
